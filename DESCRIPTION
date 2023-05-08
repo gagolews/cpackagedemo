@@ -1,0 +1,10 @@
+Package: cpackagedemo
+Type: Package
+Title: An Example R Package Featuring Some C Code
+Version: 1.0.0
+Date: 1970-01-01
+Author: Spanish Inquisition
+Maintainer: Spam Bacon Spam III <eels@hovercraft.hu>
+Description: ....
+License: GPL (>= 2)
+NeedsCompilation: yes

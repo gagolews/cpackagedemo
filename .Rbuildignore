@@ -1,0 +1,6 @@
+^README.md$
+^\.git
+^\.\.Rcheck
+^src/.*\.o$
+^src/.*\.so$
+^src/symbols\.rds$
