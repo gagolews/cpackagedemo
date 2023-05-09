@@ -4,8 +4,6 @@
 #include <R.h>
 #include <Rmath.h>
 #include <Rdefines.h>
-#include <R_ext/Rdynload.h>
-
 
 SEXP my_r_sum(SEXP x);
 
