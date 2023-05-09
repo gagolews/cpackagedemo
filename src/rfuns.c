@@ -15,7 +15,7 @@ SEXP my_r_sum(SEXP x)
     /* TODO: Consider missing value (NA) checking
      *       as my_c_sum doesn't do it. */
 
-    s = my_c_sum(REAL(x), LENGTH(x));
+    s = my_c_sum(REAL(x), (size_t)XLENGTH(x));
 
     return Rf_ScalarReal(s);
 }
