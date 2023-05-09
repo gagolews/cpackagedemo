@@ -5,6 +5,6 @@ Version: 1.0.0
 Date: 1970-01-01
 Author: Spanish Inquisition
 Maintainer: Spam Bacon Spam III <eels@hovercraft.hu>
-Description: ....
+Description: Provides an R wrapper for one portable C function, `my_c_sum`.
 License: GPL (>= 2)
 NeedsCompilation: yes
