@@ -22,7 +22,7 @@ csource <- function(
     f <- paste(readLines(fname), collapse="\n")
 
     # Set up output file names:
-    tmpdir <- tempdir()
+    tmpdir <- normalizePath(tempdir(), winslash="/")
     dynlib_ext <- .Platform[["dynlib.ext"]]
     libpath <- file.path(tmpdir, sprintf("%s%s", libname, dynlib_ext))
     cfname <- file.path(tmpdir, sprintf("%s%s", libname, ".c"))
