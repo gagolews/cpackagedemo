@@ -58,7 +58,7 @@ csource <- function(
     retval <- FALSE
     oldwd <- setwd(tmpdir)
     tryCatch({
-        if (libpath %in% sapply(getLoadedDLLs(), "[[", "path"))
+        if (libpath %in% sapply(getLoadedDLLs(), `[[`, "path"))
             dyn.unload(libpath)
         stopifnot(0 == system2(R, shlibargs))
         dyn.load(libpath)
