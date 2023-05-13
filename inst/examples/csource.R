@@ -1,4 +1,4 @@
-# Compiles a C source file using R CMD SHLIB,
+# Compiles a C or C++ source file using R CMD SHLIB,
 # loads the resulting DLL, and executes the embedded R code.
 csource <- function(
     fname,
@@ -22,13 +22,13 @@ csource <- function(
     f <- paste(readLines(fname), collapse="\n")
 
     # Set up output file names:
-    tmpdir <- normalizePath(tempdir(), winslash="/")
+    tmpdir <- normalizePath(tempdir(), winslash="/")  # tempdir on Win uses \
     dynlib_ext <- .Platform[["dynlib.ext"]]
     libpath <- file.path(tmpdir, sprintf("%s%s", libname, dynlib_ext))
-    cfname <- file.path(tmpdir, sprintf("%s%s", libname, ".c"))
-    rfname <- file.path(tmpdir, sprintf("%s%s", libname, ".R"))
+    cfname <- file.path(tmpdir, basename(fname))
+    rfname <- sub("\\..*?$", ".R", cfname, perl=TRUE)
 
-    # Separate the /**R ... <R code> ... **/ chunk from C code:
+    # Separate the /**R ... <R code> ... **/ chunk from the source file:
     rpart <- regexec("(?smi)^/\\*\\*R\\s?(.*)R\\*\\*/$", f, perl=TRUE)[[1]]
     rpart_start <- rpart
     rpart_len <- attr(rpart, "match.length")

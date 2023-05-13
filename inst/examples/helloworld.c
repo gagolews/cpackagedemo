@@ -8,7 +8,6 @@ SEXP C_hello()
     return R_NilValue;
 }
 
-
 /**R
 # This chunk will be extracted and executed by `csource`.
 

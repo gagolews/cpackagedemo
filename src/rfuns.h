@@ -5,6 +5,6 @@
 #include <Rinternals.h>
 #include <Rmath.h>
 
-SEXP my_r_sum(SEXP x);
+SEXP my_c_sum_wrapper(SEXP x);
 
 #endif

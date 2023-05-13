@@ -1,8 +1,8 @@
 #include "rfuns.h"
 #include "cfuns.h"
 
-/** Wrapper around my_c_sum. */
-SEXP my_r_sum(SEXP x)
+/** A wrapper around my_c_sum callable from R. */
+SEXP my_c_sum_wrapper(SEXP x)
 {
     double s;
 

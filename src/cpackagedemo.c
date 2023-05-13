@@ -4,7 +4,7 @@
 /** The list of functions available in R via a call to .Call():
  *  Each entry is like {exported_name, fun_pointer, number_of_arguments}. */
 static const R_CallMethodDef cCallMethods[] = {
-    {"my_r_sum", (DL_FUNC)&my_r_sum, 1},
+    {"my_c_sum_wrapper", (DL_FUNC)&my_c_sum_wrapper, 1},
     {NULL, NULL, 0}  /* the end of the list */
 };
 

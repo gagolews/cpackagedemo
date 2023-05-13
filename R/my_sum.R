@@ -5,7 +5,7 @@ my_sum <- function(x)
         x <- as.double(x)
 
     # Call my_r_sum; Note the "C_" prefix (see NAMESPACE):
-    s <- .Call(C_my_r_sum, x, PACKAGE="cpackagedemo")
+    s <- .Call(C_my_c_sum_wrapper, x, PACKAGE="cpackagedemo")
 
     # Some rather random postprocessing:
     attr(s, "what") <- deparse(substitute(x))
