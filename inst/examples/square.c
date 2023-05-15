@@ -1,5 +1,6 @@
 SEXP C_square(SEXP x)
 {
+    /* no need to call PROTECT(x), it is already in use */
     if (!Rf_isReal(x)) Rf_error("`x` should be a vector of type 'double'");
 
     size_t n = XLENGTH(x);
