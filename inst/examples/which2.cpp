@@ -15,7 +15,7 @@ extern "C" SEXP C_which2(SEXP x)
 
     SEXP y;
     PROTECT(y = Rf_allocVector(REALSXP, d.size()));
-    double* yp = REAL(y);  /* yes, type is double - ready for long vectors  */
+    double* yp = REAL(y);  /* yes, type is double - ready for long vectors */
     i=0;
     for (size_t k : d)
         yp[i++] = (double)k+1;  /* R uses 1-based indexing */

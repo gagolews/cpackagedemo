@@ -1,4 +1,4 @@
-SEXP C_square(SEXP x)
+SEXP C_square1(SEXP x)
 {
     /* no need to call PROTECT(x), it is already in use */
     if (!Rf_isReal(x)) Rf_error("`x` should be a vector of type 'double'");
@@ -11,7 +11,7 @@ SEXP C_square(SEXP x)
     double* yp = REAL(y);
 
     for (size_t i=0; i<n; ++i) {
-        if (ISNA(xp[i])) yp[i] = NA_REAL;
+        if (ISNA(xp[i])) yp[i] = xp[i];
         else             yp[i] = xp[i]*xp[i];
     }
 
@@ -21,9 +21,9 @@ SEXP C_square(SEXP x)
 }
 
 /* R
-square <- function(x)
+square1 <- function(x)
 {
     if (!is.double(x)) x <- as.double(x)
-    .Call("C_square", x, PACKAGE="square")
+    .Call("C_square1", x, PACKAGE="square1")
 }
 R */
