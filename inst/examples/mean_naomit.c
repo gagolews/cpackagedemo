@@ -27,11 +27,11 @@ SEXP C_mean_naomit(SEXP x)
     return Rf_ScalarReal((k>0)?(ret/(double)k):NA_REAL);
 }
 
-/**R
+/* R
 mean_naomit <- function(x)
 {
     if (!is.numeric(x))  # neither integer nor double
         x <- as.numeric(x)  # convert to double
     .Call("C_mean_naomit", x, PACKAGE="mean_naomit")
 }
-R**/
+R */

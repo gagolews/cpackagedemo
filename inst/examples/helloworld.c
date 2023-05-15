@@ -1,4 +1,4 @@
-/* The necessary header files are automatically included by `csource`. */
+/* the necessary header files are automatically included by `csource`. */
 
 SEXP C_hello()
 {
@@ -8,10 +8,10 @@ SEXP C_hello()
     return R_NilValue;
 }
 
-/**R
-# This chunk will be extracted and executed by `csource`.
+/* R
+# this chunk will be extracted and executed by `csource`.
 
 hello <- function()
     invisible(.Call("C_hello", PACKAGE="helloworld"))
 
-R**/
+R */

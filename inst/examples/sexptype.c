@@ -7,7 +7,7 @@ SEXP C_test_sexptype(SEXP x)
     return R_NilValue;
 }
 
-/**R
+/* R
 test_sexptype <- function(x)
     invisible(.Call("C_test_sexptype", x, PACKAGE="sexptype"))
-R**/
+R */
