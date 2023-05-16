@@ -7,7 +7,7 @@ SEXP C_mean_naomit(SEXP x)
         const int* xp = INTEGER(x);
         size_t n = XLENGTH(x);
         for (size_t i=0; i<n; ++i)
-            if (xp[i] != NA_INTEGER) {  /* NOT: ISNA(xp[i]) */
+            if (xp[i] != NA_INTEGER) {  // NOT: ISNA(xp[i])
                 ret += (double)xp[i];
                 k++;
             }
@@ -16,7 +16,7 @@ SEXP C_mean_naomit(SEXP x)
         const double* xp = REAL(x);
         size_t n = XLENGTH(x);
         for (size_t i=0; i<n; ++i)
-            if (!ISNA(xp[i])) {  /* NOT: xp[i] == NA_REAL */
+            if (!ISNA(xp[i])) {  // NOT: xp[i] == NA_REAL
                 ret += xp[i];
                 k++;
             }
