@@ -18,8 +18,9 @@ SEXP C_transpose(SEXP x)
         SEXP tdimnames = PROTECT(Rf_allocVector(VECSXP, 2));
         SET_VECTOR_ELT(tdimnames, 0, VECTOR_ELT(dimnames, 1));
         SET_VECTOR_ELT(tdimnames, 1, VECTOR_ELT(dimnames, 0));
-        Rf_setAttrib(y, R_DimNamesSymbol, tdimnames);  // set dimnames attribute
+        Rf_setAttrib(y, R_DimNamesSymbol, tdimnames);  // set dimnames
         UNPROTECT(1);
+        // dimnames might have names attribute too: left as an exercise
     }
     UNPROTECT(1);
     return y;
