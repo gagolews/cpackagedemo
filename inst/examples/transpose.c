@@ -11,7 +11,7 @@ SEXP C_transpose(SEXP x)
     double* yp = REAL(y);
     for (size_t i=0; i<n; ++i)
         for (size_t j=0; j<m; ++j)
-            yp[j+i*m] = xp[i+n*j];
+            yp[j+m*i] = xp[i+n*j];
 
     SEXP dimnames = Rf_getAttrib(x, R_DimNamesSymbol);
     if (!Rf_isNull(dimnames)) {
