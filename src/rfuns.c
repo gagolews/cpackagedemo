@@ -12,8 +12,8 @@ SEXP my_c_sum_wrapper(SEXP x)
         Rf_error("`x` should be a vector of type 'double'");
     }
 
-    /* TODO: consider missing value (NA) checking
-             as my_c_sum doesn't do it */
+    /* Exercise: consider missing value (NA) checking
+       as my_c_sum doesn't do it */
 
     s = my_c_sum(REAL(x), (size_t)XLENGTH(x));
 

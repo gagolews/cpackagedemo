@@ -1,2 +1,2 @@
 export(my_sum)
-useDynLib(cpackagedemo, .registration=TRUE, .fixes="C_")
+useDynLib(cpackagedemo)
