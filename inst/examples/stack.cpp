@@ -3,7 +3,7 @@
 class S : public std::deque<SEXP>
 {
     public: ~S()
-    {   // destructor: release all SEXPs, so that they can be GC'd
+    {   // destructor: release all SEXPs so that they can be GC'd
         while (!this->empty()) {
             SEXP obj = this->front();
             this->pop_front();

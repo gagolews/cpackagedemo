@@ -20,7 +20,7 @@ SEXP C_transpose(SEXP x)
         SET_VECTOR_ELT(tdimnames, 1, VECTOR_ELT(dimnames, 0));
         Rf_setAttrib(y, R_DimNamesSymbol, tdimnames);  // set dimnames
         UNPROTECT(1);
-        // dimnames might have names attribute too: left as an exercise
+        // dimnames might have the names attribute too (left as an exercise)
     }
     UNPROTECT(1);
     return y;
