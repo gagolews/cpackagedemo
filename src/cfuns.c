@@ -1,6 +1,6 @@
 #include "cfuns.h"
 
-/** computes the sum of all elements in an array x of size n */
+/* computes the sum of all elements in an array x of size n */
 double my_c_sum(const double* x, size_t n)
 {
     double s = 0.0;
