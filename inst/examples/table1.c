@@ -16,7 +16,7 @@ SEXP C_table1(SEXP x)
         if (xp[j] != NA_INTEGER) {
             if (xp[j] < 1 || xp[j] > k)
                 Rf_error("malformed factor");  // better safe than sorry
-            yp[xp[j]-1]++;  // factor levels are 1..k, but C needs 0..k-1
+            yp[xp[j]-1] += 1.0;  // levels are 1..k, but C needs 0..k-1
         }
     }
 
