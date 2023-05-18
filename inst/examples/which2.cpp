@@ -2,7 +2,6 @@
 
 extern "C" SEXP C_which2(SEXP x)
 {
-    // no need to call PROTECT(x), it is already in use
     if (!Rf_isLogical(x)) Rf_error("`x` should be of type 'logical'");
 
     size_t n = XLENGTH(x), i;
@@ -14,7 +13,7 @@ extern "C" SEXP C_which2(SEXP x)
             d.push_back(i);
 
     SEXP y = PROTECT(Rf_allocVector(REALSXP, d.size()));
-    double* yp = REAL(y);  // yes, type is double - ready for long vectors
+    double* yp = REAL(y);  // ready for long vectors
     i=0;
     for (size_t k : d)
         yp[i++] = (double)k+1;  // R uses 1-based indexing

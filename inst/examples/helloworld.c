@@ -1,4 +1,4 @@
-/* the necessary header files are automatically included by `csource`. */
+// the necessary header files are automatically included by `csource`
 
 SEXP C_hello()
 {
