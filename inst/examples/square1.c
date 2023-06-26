@@ -1,7 +1,7 @@
 SEXP C_square1(SEXP x)
 {
     // no need to call PROTECT(x), it is already in use
-    if (!Rf_isReal(x)) Rf_error("`x` should be a vector of type 'double'");
+    if (!Rf_isReal(x)) Rf_error("`x` should be a vector of the type 'double'");
 
     size_t n = XLENGTH(x);
     const double* xp = REAL(x);

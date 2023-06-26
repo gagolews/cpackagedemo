@@ -31,7 +31,7 @@ SEXP C_mean_naomit(SEXP x)
 mean_naomit <- function(x)
 {
     if (!is.numeric(x))  # neither integer nor double
-        x <- as.numeric(x)  # convert to double
+        x <- as.numeric(x)  # convert to double (the same as as.double)
     .Call("C_mean_naomit", x, PACKAGE="mean_naomit")
 }
 R */

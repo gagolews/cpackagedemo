@@ -5,7 +5,7 @@
    each entry is like {exported_name, fun_pointer, number_of_arguments} */
 static const R_CallMethodDef cCallMethods[] = {
     {"my_c_sum_wrapper", (DL_FUNC)&my_c_sum_wrapper, 1},
-    {NULL, NULL, 0}  // the end of the list
+    {NULL, NULL, 0}  // the end of the list (sentinel)
 };
 
 /* registers the list of callable functions */

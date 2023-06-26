@@ -1,9 +1,9 @@
 # compiles a C or C++ source file using R CMD SHLIB,
 # loads the resulting DLL, and executes the embedded R code
+
 csource <- function(
     fname,
-    libname=regmatches(basename(fname),
-        regexpr("[^.]*(?=\\..*)", basename(fname), perl=TRUE)),
+    libname=NULL,  # defaults to the base name of `fname` without extension
     shlibargs=character(),
     headers=paste0(
         "#include <R.h>\n",
@@ -11,12 +11,18 @@ csource <- function(
         "#include <Rmath.h>\n"
     ),
     R=file.path(R.home(), "bin/R")
-) {
+)
+{
     stopifnot(file.exists(fname))
-    stopifnot(is.character(libname), length(libname) == 1)
     stopifnot(is.character(shlibargs))
     stopifnot(is.character(headers))
     stopifnot(is.character(R), length(R) == 1)
+
+    if (is.null(libname))
+        libname <- regmatches(basename(fname),
+            regexpr("[^.]*(?=\\..*)", basename(fname), perl=TRUE))
+
+    stopifnot(is.character(libname), length(libname) == 1)
 
     # read the source file:
     f <- paste(readLines(fname), collapse="\n")
@@ -26,7 +32,7 @@ csource <- function(
     dynlib_ext <- .Platform[["dynlib.ext"]]
     libpath <- file.path(tmpdir, sprintf("%s%s", libname, dynlib_ext))
     cfname <- file.path(tmpdir, basename(fname))
-    rfname <- sub("\\..*?$", ".R", cfname, perl=TRUE)
+    rfname <- sub("\\..*?$", ".R", cfname, perl=TRUE)  # .R extension
 
     # separate the /* R ... <R code> ... R */ chunk from the source file:
     rpart <- regexec("(?smi)^/\\* R\\s?(.*)R \\*/$", f, perl=TRUE)[[1]]
@@ -70,6 +76,6 @@ csource <- function(
     })
     setwd(oldwd)
 
-    if (!retval) stop("error compiling file")
+    if (!retval) stop("error compiling file or executing R code therein")
     invisible(TRUE)
 }

@@ -1,6 +1,6 @@
 SEXP C_which1(SEXP x)
 {
-    if (!Rf_isLogical(x)) Rf_error("`x` should be of type 'logical'");
+    if (!Rf_isLogical(x)) Rf_error("`x` should be of the type 'logical'");
 
     size_t n = XLENGTH(x), i, k;
     const int* xp = LOGICAL(x);
