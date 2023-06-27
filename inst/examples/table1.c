@@ -1,11 +1,11 @@
 SEXP C_table1(SEXP x)
 {
-    if (!Rf_isFactor(x)) Rf_error("`x` is not an object of class 'factor'");
+    if (!Rf_isFactor(x)) Rf_error("`x` is not a 'factor' object");
 
     size_t n = XLENGTH(x);
-    const int* xp = INTEGER(x);  // x is INTSXP
+    const int* xp = INTEGER(x);  // `x` is INTSXP
 
-    SEXP levels = Rf_getAttrib(x, R_LevelsSymbol);  // levels is STRSXP
+    SEXP levels = Rf_getAttrib(x, R_LevelsSymbol);  // `levels` is a STRSXP
     size_t k = XLENGTH(levels);
 
     SEXP y = PROTECT(Rf_allocVector(REALSXP, k));

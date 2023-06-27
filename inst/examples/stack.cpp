@@ -18,7 +18,7 @@ S* get_stack_pointer(SEXP s, bool check_zero=true)  // internal function
         Rf_error("not an external pointer");
 
     SEXP tag = R_ExternalPtrTag(s);  // our convention, this can be anything
-    if (TYPEOF(tag) != CHARSXP || strcmp(CHAR(tag), "stack") !=0 )
+    if (TYPEOF(tag) != CHARSXP || strcmp(CHAR(tag), "stack") != 0)
         Rf_error("not a stack");
 
     S* sp = (S*)R_ExternalPtrAddr(s);

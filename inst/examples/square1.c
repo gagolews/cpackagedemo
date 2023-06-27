@@ -1,7 +1,7 @@
 SEXP C_square1(SEXP x)
 {
     // no need to call PROTECT(x), it is already in use
-    if (!Rf_isReal(x)) Rf_error("`x` should be a vector of the type 'double'");
+    if (!Rf_isReal(x)) Rf_error("`x` should be of the type 'double'");
 
     size_t n = XLENGTH(x);
     const double* xp = REAL(x);
@@ -10,13 +10,13 @@ SEXP C_square1(SEXP x)
     double* yp = REAL(y);
 
     for (size_t i=0; i<n; ++i) {
-        if (ISNA(xp[i])) yp[i] = xp[i];
+        if (ISNA(xp[i])) yp[i] = xp[i];  // NA_REAL
         else             yp[i] = xp[i]*xp[i];
     }
 
-    UNPROTECT(1);  // pops 1 object from the protect stack;
+    UNPROTECT(1);  // pops one object from the protect stack;
         // does not trigger garbage collection, so we can return `y` now
-    return y;
+    return y;  // R will retrieve and protect it
 }
 
 /* R

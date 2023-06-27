@@ -12,14 +12,14 @@ SEXP C_which1(SEXP x)
         if (xp[i] != NA_LOGICAL && xp[i])
             d[k++] = i;
 
+    // Rf_allocVector can longjmp, memory leak possible...
     SEXP y = PROTECT(Rf_allocVector(REALSXP, k));
-    double* yp = REAL(y);  // yes, type is double - ready for long vectors
+    double* yp = REAL(y);  // yes, the type is double; ready for long vectors
     for (i=0; i<k; ++i)
         yp[i] = (double)d[i]+1;  // R uses 1-based indexing
+
+    free(d);
     UNPROTECT(1);
-
-    free(d);  // we don't want any memory leaks!
-
     return y;
 }
 

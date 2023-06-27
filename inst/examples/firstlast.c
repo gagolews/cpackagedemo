@@ -12,7 +12,7 @@ SEXP C_firstlast(SEXP x)
     else if (Rf_isVectorList(x)) {
         SEXP y = PROTECT(Rf_allocVector(VECSXP, 2));
         // VECTOR_ELT(x, i) is PROTECTed by the container;
-        // SET_VECTOR_ELT does not trigger GC, so no need to call PROTECT
+        // SET_VECTOR_ELT does not trigger GC; no need to call PROTECT
         // on the result of C_firstlast(...) in this context
         SET_VECTOR_ELT(y, 0, C_firstlast(VECTOR_ELT(x, 0)));
         SET_VECTOR_ELT(y, 1, C_firstlast(VECTOR_ELT(x, XLENGTH(x)-1)));

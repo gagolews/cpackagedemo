@@ -1,8 +1,8 @@
 SEXP C_square2(SEXP x)
 {
-    if (!Rf_isReal(x)) Rf_error("`x` should be a vector of type 'double'");
+    if (!Rf_isReal(x)) Rf_error("`x` should be of the type 'double'");
 
-    x = PROTECT(Rf_duplicate(x));  // OK; it's a pointer
+    x = PROTECT(Rf_duplicate(x));  // OK; just replaces the pointer (address)
 
     size_t n = XLENGTH(x);
     double* xp = REAL(x);
@@ -10,7 +10,6 @@ SEXP C_square2(SEXP x)
         if (!ISNA(xp[i])) xp[i] = xp[i]*xp[i];
 
     UNPROTECT(1);
-
     return x;
 }
 
